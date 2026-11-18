@@ -28,3 +28,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   _______, _______, _______,   _______, _______, _______
     ),
 };
+
+#ifdef RGB_MATRIX_ENABLE
+void keyboard_post_init_user(void) {
+    rgb_matrix_enable_noeeprom();
+    rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
+}
+
+bool rgb_matrix_indicators_user(void) {
+    switch (get_highest_layer(layer_state)) {
+        case SYM:
+            rgb_matrix_set_color_all(32, 16, 0);
+            break;
+        case NAV:
+            rgb_matrix_set_color_all(0, 0, 32);
+            break;
+        default:
+            rgb_matrix_set_color_all(16, 0, 32);
+            break;
+    }
+    return true;
+}
+#endif

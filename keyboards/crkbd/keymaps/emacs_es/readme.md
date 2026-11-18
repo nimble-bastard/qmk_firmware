@@ -22,7 +22,7 @@ dedicadas. `Meta` envía Alt izquierdo.
 
 **Super** reemplaza al Shift derecho en la esquina inferior derecha.
 Envía `KC_LGUI` (Super en Linux, tecla Windows en Windows). El Shift
-izquierdo sigue disponible.
+izquierdo está en la esquina inferior izquierda, debajo de `Esc`.
 
 ## SÍM — símbolos para programar
 
@@ -55,6 +55,13 @@ activa esa capa, conserva su función de la base.
 **Atajos de Sway (`$mod` = `Mod4`):** para `Super+1`, mantén `Super` y
 `NAV` con la mano derecha y pulsa `Z` con la izquierda (`Z` da `1` en
 NAV). Para `Super+Shift+Q`, usa el Shift izquierdo sin activar una capa.
+
+## Colores por capa
+
+Las dos mitades muestran un color fijo de brillo bajo: **BASE violeta**,
+**SÍM ámbar** y **NAV azul**. Si mantienes las dos capas, NAV tiene prioridad;
+al soltarlas, vuelve el violeta. El mapa usa RGB Matrix y no guarda cambios
+de iluminación en la EEPROM.
 
 ## Español en Emacs
 
