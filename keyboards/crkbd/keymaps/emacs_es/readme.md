@@ -36,9 +36,9 @@ izquierdo sigue disponible.
 ## NAV — números y navegación
 
 ```text
-·      7      8      9      ·      ·      │ ·      Inicio ↑      Fin    RePág  Enter
-·      4      5      6      ·      ·      │ ·      ←      ↓      →      AvPág  Supr
-·      1      2      3      0      ·      │ ·      ·      ·      ·      ·      ·
+·      7      8      9      ·      ·      │ ·      Inicio Fin    ·      RePág  Enter
+·      4      5      6      ·      ·      │ ·      ·      ·      ↑      AvPág  Supr
+·      1      2      3      0      ·      │ ·      ·      ←      ↓      →      ·
                      ·      ·      ·      │ ·      ·      ·
 ```
 
@@ -47,8 +47,9 @@ activa esa capa, conserva su función de la base.
 
 - **Enter:** mantén `NAV` y pulsa `Backspace`. Sin `NAV`, la tecla sigue
   siendo `Backspace`.
-- **Flechas en T invertida:** `I` es `↑`; `J`, `K` y `L` son `←`, `↓` y
+- **Flechas en T invertida:** `L` es `↑`; `,`, `.` y `/` son `←`, `↓` y
   `→`. En `vi`, puedes seguir usando `hjkl` sin capa.
+- **Inicio y Fin:** `NAV + U` y `NAV + I`, respectivamente.
 - **Números:** siguen agrupados en la mitad izquierda.
 
 **Atajos de Sway (`$mod` = `Mod4`):** para `Super+1`, mantén `Super` y
