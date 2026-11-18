@@ -12,12 +12,17 @@ capas momentáneas: mantén pulsada la tecla de pulgar para acceder a su capa.
 ```text
 Tab    Q      W      E      R      T      │ Y      U      I      O      P      Bksp
 Esc    A      S      D      F      G      │ H      J      K      L      ;      '
-Shift  Z      X      C      V      B      │ N      M      ,      .      /      Shift
+Shift  Z      X      C      V      B      │ N      M      ,      .      /      Super
                      SÍM    Ctrl   Esp    │ Enter  Meta   NAV
 ```
 
 La última fila muestra los pulgares en orden físico, de izquierda a derecha.
 `Ctrl` y `Meta` son teclas dedicadas. `Meta` envía Alt izquierdo.
+
+**Super es el único cambio del mapa:** reemplaza al Shift derecho en la
+esquina inferior derecha. Envía `KC_LGUI` (Super en Linux, tecla Windows
+en Windows). Se conservan el Shift izquierdo, los pulgares y las capas
+SÍM y NAV.
 
 ## SÍM — símbolos para programar
 
@@ -39,7 +44,12 @@ La última fila muestra los pulgares en orden físico, de izquierda a derecha.
 
 `·` indica una tecla transparente, no una tecla desactivada: si solo está
 activa esa capa, conserva su función de la base. En NAV, las flechas
-`← ↓ ↑ →` quedan en las posiciones de `H J K L`.
+`← ↓ ↑ →` quedan en las posiciones de `H J K L` y los números siguen
+agrupados en la mitad izquierda.
+
+**Atajos de Sway (`$mod` = `Mod4`):** para `Super+1`, mantén `Super` y
+`NAV` con la mano derecha y pulsa `Z` con la izquierda (`Z` da `1` en
+NAV). Para `Super+Shift+Q`, usa el Shift izquierdo sin activar una capa.
 
 ## Español en Emacs
 
@@ -106,6 +116,9 @@ compilación equivale a `qmk compile -kb crkbd/rev1 -km emacs_es`; el script
 usa la CLI del entorno virtual y desactiva la sincronización automática de
 submódulos de QMK. Si termina correctamente, genera
 `crkbd_rev1_emacs_es.hex`. Compilar no flashea el teclado.
+
+Si ya tenías un `.hex` de la versión con Shift derecho, vuelve a compilar
+antes de flashear para incorporar Super.
 
 ### 4. Flasheo manual, una mitad a la vez
 
