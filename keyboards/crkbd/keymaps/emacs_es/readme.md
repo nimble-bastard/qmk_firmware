@@ -26,25 +26,34 @@ Linux, tecla Windows en Windows). Ambos `Shift` están en los extremos de
 la fila central. El apóstrofo queda en la esquina inferior derecha.
 En BASE, cualquiera de los dos Shift con Backspace envía Suprimir.
 
+**Bloq Mayús:** con el Shift izquierdo, dos toques rápidos lo activan y un
+toque aislado lo desactiva si ya está activo. Con Bloq Mayús apagado, un
+toque aislado no escribe nada. Cada toque y la pausa entre toques deben
+durar menos de 200 ms. Mantener Shift o combinarlo con otra tecla no
+cambia Bloq Mayús. El Shift derecho no tiene gestos.
+
 ## SÍM — símbolos para programar
 
 ```text
-Enter  ~      !      @      #      $      │ %      ^      &      *      \      |
+·      ~      !      @      #      $      │ %      ^      &      *      \      |
 Super  (      )      [      ]      ·      │ `      {      }      <      >      ·
-·      -      _      =      +      ·      │ ·      :      ?      ·      ·      "
+·      -      _      =      +      ·      │ ·      :      ?      ¿      ¡      "
                      ·      ·      ·      │ ·      ·      ·
 ```
 
-`SÍM + Esc` envía Enter y `SÍM + Shift izquierdo` envía
-Super. `SÍM + H` escribe el backtick (`` ` ``) y `SÍM + '` escribe
-comillas dobles. El Shift derecho conserva su función.
+`SÍM + Esc` sigue enviando Escape. `SÍM + Shift izquierdo` envía Super.
+`SÍM + H` escribe el backtick (`` ` ``) y `SÍM + '` escribe comillas
+dobles. El Shift derecho conserva su función.
+
+Los cuatro signos están en teclas fijas, sin gestos de Shift: `SÍM + W`
+da `!`, `SÍM + ,` da `?`, `SÍM + .` da `¿` y `SÍM + /` da `¡`.
 
 ## NAV — números y navegación
 
 ```text
 ·      7      8      9      ·      Win    │ ·      Inicio ↑      Fin    RePág  ·
 ·      4      5      6      ·      ·      │ ·      ←      ↓      →      AvPág  Meta
-·      1      2      3      0      Linux  │ ·      ·      ·      ·      ·      Caps
+·      1      2      3      0      Linux  │ ·      ·      ·      ·      ·      ·
                      ·      ·      ·      │ ·      ·      ·
 ```
 
@@ -55,8 +64,7 @@ activa esa capa, conserva su función de la base.
   adicional dentro de la capa NAV.
 - **Backspace y Meta:** `NAV + Backspace` sigue siendo Backspace sin Shift.
   `NAV + Shift derecho` envía Meta (Alt izquierdo).
-- **Bloq Mayús:** `NAV + '` alterna Bloq Mayús (`Caps`); sin NAV, la tecla
-  escribe el apóstrofo.
+- **Apóstrofo:** `NAV + '` sigue escribiendo el apóstrofo.
 - **Flechas en T invertida:** `I` es `↑`; `J`, `K` y `L` son `←`, `↓` y
   `→`. En `vi`, puedes seguir usando `hjkl` sin capa.
 - **Inicio y Fin:** `NAV + U` y `NAV + O`, respectivamente.
@@ -66,38 +74,43 @@ activa esa capa, conserva su función de la base.
 el pulgar izquierdo y `NAV` con el derecho, y pulsa `Z` (`Z` da `1` en
 NAV). Para `Super+Shift+Q`, no actives ninguna capa.
 
-## Gestos de puntuación
+## FN / Control — funciones y multimedia
 
-| Mantén pulsado | Toca | Un toque | Dos toques rápidos |
-| --- | --- | --- | --- |
-| Shift izquierdo | Shift derecho | `?` | `¿` |
-| Shift derecho | Shift izquierdo | `!` | `¡` |
+```text
+F1     F2     F3     F4     F5     F6     │ F7       F8       F9         F10  F11  F12
+—      Mute   Vol−   Vol+   —      —      │ Anterior Reprod.  Siguiente  —    —    ImprPant
+—      —      —      —      —      —      │ —        —        —          —    —    —
+                     ·      ·      ·      │ ·        ·        ·
+```
 
-El signo sale al soltar el Shift que mantuviste pulsado. Cada toque y la
-pausa entre dos toques deben durar menos de 200 ms. Si pulsas otra tecla,
-el gesto se cancela y los Shift siguen actuando como modificadores.
+Mantén **SÍM + NAV** en cualquier orden hasta que se active FN. Al soltar
+cualquiera, queda activa la capa del otro pulgar. Los toques individuales
+siguen dando Tab y Enter. `—` indica una posición sin salida: FN no deja
+pasar símbolos ni selectores de modo desde otras capas en esas posiciones.
+
+## Signos invertidos
 
 Para `¿` y `¡`, elige el sistema con **`NAV + B`** (Linux) o **`NAV + T`**
 (Windows). Estas combinaciones no escriben nada y afectan solo a los signos
 invertidos. El teclado arranca en modo Linux y no guarda el modo en EEPROM.
 Linux usa `Ctrl+Shift+U` seguido del valor hexadecimal (`BF` o `A1`); Windows
-usa los códigos Alt numéricos `0191` y `0161`. La aplicación debe admitir
-la secuencia correspondiente; en Sway no todas aceptan `Ctrl+Shift+U`.
+usa los códigos Alt numéricos `0191` y `0161`. Pulsa la tecla del signo
+sin mantener Ctrl, Alt, Shift ni Super. La aplicación debe admitir la
+secuencia correspondiente; en Sway no todas aceptan `Ctrl+Shift+U`.
 
-**Prueba tras flashear:** comprueba los cuatro gestos en un campo de texto.
-Mantén ambos Shift y pulsa una letra: debe salir en mayúscula, sin añadir
-un signo al soltar los Shift. Comprueba también `Shift + Backspace` en
-BASE y que `NAV + '` cambia a rojo ambas mitades.
+**Prueba tras flashear:** verifica los cuatro signos en un campo de texto.
+Pulsa rápido `Shift + A` y `Shift + Backspace` para comprobar que no
+alternan Bloq Mayús. Prueba el doble toque y el toque de salida, y activa
+FN en ambos órdenes: debe funcionar sin enviar Tab ni Enter.
 
 ## Colores por capa y Bloq Mayús
 
 Las dos mitades muestran un color fijo de brillo bajo: **BASE violeta**,
-**SÍM ámbar** y **NAV azul**. Si mantienes las dos capas, NAV tiene prioridad;
-al soltarlas, vuelve el violeta. El mapa usa RGB Matrix y no guarda cambios
-de iluminación en la EEPROM. Mientras Bloq Mayús esté activo, el estado
-que informa el sistema se sincroniza entre las mitades y **ambas muestran
-rojo fijo**, incluso en SÍM o NAV. Al desactivarlo vuelve el color de la
-capa activa.
+**SÍM ámbar**, **NAV azul** y **FN verde**. El mapa usa RGB Matrix y no
+guarda cambios de iluminación en la EEPROM. Mientras Bloq Mayús esté
+activo, el estado que informa el sistema se sincroniza entre las mitades
+y **ambas muestran rojo fijo**, incluso en FN. Al desactivarlo vuelve el
+color de la capa activa.
 
 ## Español en Emacs
 
