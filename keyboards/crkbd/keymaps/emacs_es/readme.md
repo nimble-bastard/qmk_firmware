@@ -4,64 +4,100 @@ Este mapa está pensado para programar con Emacs clásico y usar `vi` por SSH,
 sin cambiar el mapa al pasar el mismo teclado de Linux a Windows con un switch
 USB. Los ajustes del Corne viven en el firmware; Windows no necesita QMK.
 
-Usa la distribución **US normal** en Linux y Windows. `SÍM` y `NAV` son
-capas momentáneas: mantén pulsada la tecla de pulgar para acceder a su capa.
+Usa la distribución **US normal** en Linux y Windows. Toca `Tab/SÍM` para
+enviar Tab o `Ent/NAV` para enviar Enter. Mantén el pulgar pulsado para
+activar su capa momentánea.
 
 ## BASE — QWERTY US
 
 ```text
-Tab    Q      W      E      R      T      │ Y      U      I      O      P      Bksp
-Esc    A      S      D      F      G      │ H      J      K      L      ;      '
-Shift  Z      X      C      V      B      │ N      M      ,      .      /      Super
-                     SÍM    Ctrl   Esp    │ Esp    Meta   NAV
+Esc    Q      W      E      R        T      │ Y      U        I      O      P      Bksp
+Shift  A      S      D      F        G      │ H      J        K      L      ;      Shift
+Ctrl   Z      X      C      V        B      │ N      M        ,      .      /      '
+                     Super  Tab/SÍM  Esp    │ Esp    Ent/NAV  Meta
 ```
 
 La última fila muestra los pulgares en orden físico, de izquierda a derecha.
 Los dos pulgares interiores envían Espacio. `Ctrl` y `Meta` son teclas
 dedicadas. `Meta` envía Alt izquierdo.
 
-**Super** reemplaza al Shift derecho en la esquina inferior derecha.
-Envía `KC_LGUI` (Super en Linux, tecla Windows en Windows). El Shift
-izquierdo está en la esquina inferior izquierda, debajo de `Esc`.
+**Super** está en el pulgar exterior izquierdo y envía `KC_LGUI` (Super en
+Linux, tecla Windows en Windows). Ambos `Shift` están en los extremos de
+la fila central. El apóstrofo queda en la esquina inferior derecha.
+En BASE, cualquiera de los dos Shift con Backspace envía Suprimir.
 
 ## SÍM — símbolos para programar
 
 ```text
-`      ~      !      @      #      $      │ %      ^      &      *      \      |
-·      (      )      [      ]      ·      │ ·      {      }      <      >      "
-·      -      _      =      +      ·      │ ·      :      ?      ·      ·      ·
+Enter  ~      !      @      #      $      │ %      ^      &      *      \      |
+Super  (      )      [      ]      ·      │ `      {      }      <      >      ·
+·      -      _      =      +      ·      │ ·      :      ?      ·      ·      "
                      ·      ·      ·      │ ·      ·      ·
 ```
+
+`SÍM + Esc` envía Enter y `SÍM + Shift izquierdo` envía
+Super. `SÍM + H` escribe el backtick (`` ` ``) y `SÍM + '` escribe
+comillas dobles. El Shift derecho conserva su función.
 
 ## NAV — números y navegación
 
 ```text
-·      7      8      9      ·      ·      │ ·      Inicio Fin    ·      RePág  Supr
-·      4      5      6      ·      ·      │ ·      ·      ·      ↑      AvPág  Enter
-·      1      2      3      0      ·      │ ·      ·      ←      ↓      →      ·
+·      7      8      9      ·      Win    │ ·      Inicio ↑      Fin    RePág  ·
+·      4      5      6      ·      ·      │ ·      ←      ↓      →      AvPág  Meta
+·      1      2      3      0      Linux  │ ·      ·      ·      ·      ·      Caps
                      ·      ·      ·      │ ·      ·      ·
 ```
 
 `·` indica una tecla transparente, no una tecla desactivada: si solo está
 activa esa capa, conserva su función de la base.
 
-- **Enter y Suprimir:** `NAV + '` (apóstrofo) envía Enter y
-  `NAV + Backspace` envía Suprimir. Sin NAV, ambas teclas conservan su función.
-- **Flechas en T invertida:** `L` es `↑`; `,`, `.` y `/` son `←`, `↓` y
+- **Enter:** un toque en `Ent/NAV` envía Enter; no hay una tecla Enter
+  adicional dentro de la capa NAV.
+- **Backspace y Meta:** `NAV + Backspace` sigue siendo Backspace sin Shift.
+  `NAV + Shift derecho` envía Meta (Alt izquierdo).
+- **Bloq Mayús:** `NAV + '` alterna Bloq Mayús (`Caps`); sin NAV, la tecla
+  escribe el apóstrofo.
+- **Flechas en T invertida:** `I` es `↑`; `J`, `K` y `L` son `←`, `↓` y
   `→`. En `vi`, puedes seguir usando `hjkl` sin capa.
-- **Inicio y Fin:** `NAV + U` y `NAV + I`, respectivamente.
+- **Inicio y Fin:** `NAV + U` y `NAV + O`, respectivamente.
 - **Números:** siguen agrupados en la mitad izquierda.
 
-**Atajos de Sway (`$mod` = `Mod4`):** para `Super+1`, mantén `Super` y
-`NAV` con la mano derecha y pulsa `Z` con la izquierda (`Z` da `1` en
-NAV). Para `Super+Shift+Q`, usa el Shift izquierdo sin activar una capa.
+**Atajos de Sway (`$mod` = `Mod4`):** para `Super+1`, mantén `Super` con
+el pulgar izquierdo y `NAV` con el derecho, y pulsa `Z` (`Z` da `1` en
+NAV). Para `Super+Shift+Q`, no actives ninguna capa.
 
-## Colores por capa
+## Gestos de puntuación
+
+| Mantén pulsado | Toca | Un toque | Dos toques rápidos |
+| --- | --- | --- | --- |
+| Shift izquierdo | Shift derecho | `?` | `¿` |
+| Shift derecho | Shift izquierdo | `!` | `¡` |
+
+El signo sale al soltar el Shift que mantuviste pulsado. Cada toque y la
+pausa entre dos toques deben durar menos de 200 ms. Si pulsas otra tecla,
+el gesto se cancela y los Shift siguen actuando como modificadores.
+
+Para `¿` y `¡`, elige el sistema con **`NAV + B`** (Linux) o **`NAV + T`**
+(Windows). Estas combinaciones no escriben nada y afectan solo a los signos
+invertidos. El teclado arranca en modo Linux y no guarda el modo en EEPROM.
+Linux usa `Ctrl+Shift+U` seguido del valor hexadecimal (`BF` o `A1`); Windows
+usa los códigos Alt numéricos `0191` y `0161`. La aplicación debe admitir
+la secuencia correspondiente; en Sway no todas aceptan `Ctrl+Shift+U`.
+
+**Prueba tras flashear:** comprueba los cuatro gestos en un campo de texto.
+Mantén ambos Shift y pulsa una letra: debe salir en mayúscula, sin añadir
+un signo al soltar los Shift. Comprueba también `Shift + Backspace` en
+BASE y que `NAV + '` cambia a rojo ambas mitades.
+
+## Colores por capa y Bloq Mayús
 
 Las dos mitades muestran un color fijo de brillo bajo: **BASE violeta**,
 **SÍM ámbar** y **NAV azul**. Si mantienes las dos capas, NAV tiene prioridad;
 al soltarlas, vuelve el violeta. El mapa usa RGB Matrix y no guarda cambios
-de iluminación en la EEPROM.
+de iluminación en la EEPROM. Mientras Bloq Mayús esté activo, el estado
+que informa el sistema se sincroniza entre las mitades y **ambas muestran
+rojo fijo**, incluso en SÍM o NAV. Al desactivarlo vuelve el color de la
+capa activa.
 
 ## Español en Emacs
 
